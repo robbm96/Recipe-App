@@ -9,8 +9,8 @@ import SwiftUI
 
 struct RecipeListView: View {
     
-    //Reference the view model
-    @ObservedObject var model = RecipeModel()
+    //Create a property that will use the instance created in the RecipeTabView
+    @EnvironmentObject var model:RecipeModel
     
     var body: some View {
         

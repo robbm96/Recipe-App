@@ -14,7 +14,7 @@ struct RecipeTabView: View {
         TabView{
             
             //First tab item
-            Text("Featured View")
+            RecipeFeaturedView()
                 .tabItem{
                     VStack{
                         Image(systemName: "star.fill")
@@ -31,7 +31,8 @@ struct RecipeTabView: View {
                         Text("Recipe List")
                     }
                 }
-        }
+        } //The Environmentobject modifier allows us to create an instance of the RecipeModel class and use a property in all other views to access the same instance instead of having to creat a new instance in every view
+        .environmentObject(RecipeModel())
     }
 }
 
