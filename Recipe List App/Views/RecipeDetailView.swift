@@ -33,8 +33,9 @@ struct RecipeDetailView: View {
                     .padding(.vertical, 5.0)
                     
                     //Use ForEach loop to generate the text elements for the ingredients property
-                    ForEach(recipe.ingredients, id: \.self) { item in
-                        Text("• " + item)
+                    //We are able to not include 'id: \.self' in the parameters for teh loop because 'ingredients' is Identifiable
+                    ForEach(recipe.ingredients) { item in
+                        Text("• " + item.name)
                     }
                 }
                 .padding(.horizontal)
