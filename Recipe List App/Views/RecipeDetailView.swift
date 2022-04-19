@@ -9,6 +9,9 @@ import SwiftUI
 
 struct RecipeDetailView: View {
     
+    //State property used for the selected serving size in the picker
+    @State var selectedServingSize = 2
+    
     //Initialize variable of Recipe data type. We are not creating an instance since this view will rely on the user input from the RecipeListView
     var recipe:Recipe
     
@@ -25,6 +28,25 @@ struct RecipeDetailView: View {
                     .resizable()
                     .scaledToFill()
                 
+                //MARK: Serving Size Picker
+                VStack(alignment: .leading) {
+                    
+                    //Text element
+                    Text("Pick your serving size:")
+                    
+                    //Picker used for selection of serving sizes
+                    Picker("", selection: $selectedServingSize ) {
+                        Text("2").tag(2)
+                        Text("4").tag(4)
+                        Text("6").tag(6)
+                        Text("8").tag(8)
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                    .frame(width: 160)
+                }
+                .padding()
+                
+                
                 //MARK: Ingredients
                 //VStack aligns "Ingredients" and ingredients property
                 VStack(alignment: .leading){
@@ -35,7 +57,7 @@ struct RecipeDetailView: View {
                     //Use ForEach loop to generate the text elements for the ingredients property
                     //We are able to not include 'id: \.self' in the parameters for teh loop because 'ingredients' is Identifiable
                     ForEach(recipe.ingredients) { item in
-                        Text("• " + item.name)
+                        Text("• " + RecipeModel.getPortion(ingredient: item, recipeServings: recipe.servings, targetServings: selectedServingSize) + " " + item.name.lowercased())
                     }
                 }
                 .padding(.horizontal)

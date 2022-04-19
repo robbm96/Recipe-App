@@ -18,6 +18,7 @@
 		505902A62800B04C0024E328 /* RecipeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505902A52800B04C0024E328 /* RecipeDetailView.swift */; };
 		507C7CA1280672C000D2D279 /* RecipeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507C7CA0280672C000D2D279 /* RecipeTabView.swift */; };
 		50A0FFBB2806FD4500F8929F /* RecipeFeaturedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A0FFBA2806FD4500F8929F /* RecipeFeaturedView.swift */; };
+		50C6DAB3280E50A8000EE88A /* Rational.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C6DAB2280E50A8000EE88A /* Rational.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		505902A52800B04C0024E328 /* RecipeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailView.swift; sourceTree = "<group>"; };
 		507C7CA0280672C000D2D279 /* RecipeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTabView.swift; sourceTree = "<group>"; };
 		50A0FFBA2806FD4500F8929F /* RecipeFeaturedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeFeaturedView.swift; sourceTree = "<group>"; };
+		50C6DAB2280E50A8000EE88A /* Rational.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rational.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				5059028027FDFE3B0024E328 /* Models */,
 				5059028227FDFE4A0024E328 /* Services */,
 				5059028127FDFE440024E328 /* Data */,
+				50C6DAB1280E5047000EE88A /* Utilities */,
 				5059027427FDFDE00024E328 /* Assets.xcassets */,
 				5059027627FDFDE00024E328 /* Preview Content */,
 			);
@@ -126,6 +129,14 @@
 				5059028927FE816C0024E328 /* DataService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		50C6DAB1280E5047000EE88A /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				50C6DAB2280E50A8000EE88A /* Rational.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +212,7 @@
 			files = (
 				5059028627FE245E0024E328 /* Recipe.swift in Sources */,
 				505902A62800B04C0024E328 /* RecipeDetailView.swift in Sources */,
+				50C6DAB3280E50A8000EE88A /* Rational.swift in Sources */,
 				5059028827FE26500024E328 /* RecipeModel.swift in Sources */,
 				5059027327FDFDDF0024E328 /* RecipeListView.swift in Sources */,
 				5059027127FDFDDF0024E328 /* Recipe_List_App.swift in Sources */,
