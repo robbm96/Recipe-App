@@ -12,6 +12,10 @@ struct RecipeFeaturedView: View {
     //Create a property that will use the instance created in the RecipeTabView
     @EnvironmentObject var model:RecipeModel
     
+    //Create state property that will be used to show the recipe sheet in the button
+    //Default set to false
+    @State var isDetailViewShowing = false
+    
     var body: some View {
        
         VStack(alignment: .leading, spacing: 0.0){
@@ -33,18 +37,33 @@ struct RecipeFeaturedView: View {
                         //Check if recipe is a featured recipe
                         if model.recipes[index].featured  == true {
                             
-                            ZStack{
-                                Rectangle()
-                                    .foregroundColor(.white)
-                                VStack(spacing:0){
-                                    Image(model.recipes[index].image)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .clipped()
-                                    Text(model.recipes[index].name)
-                                        .padding(5)
+                            //Button to pull up recipe sheet when featured recipe is clicked on
+                            Button(action: {
+                                
+                                //Set isDetailView to true to show DetailView sheet when button is clicked
+                                isDetailViewShowing = true
+                                
+                            }, label: {
+                                ZStack{
+                                    Rectangle()
+                                        .foregroundColor(.white)
+                                    VStack(spacing:0){
+                                        Image(model.recipes[index].image)
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .clipped()
+                                        Text(model.recipes[index].name)
+                                            .padding(5)
+                                    }
                                 }
-                            }.frame(width: geo.size.width - 40, height: geo.size.height - 100, alignment: .center)
+                            })
+                            //Sheet modifier used to show DetailView sheet for featured recipes
+                            .sheet(isPresented: $isDetailViewShowing, content: {
+                                //Call RecipeDetailView and passing in recipe to dispaly sheet
+                                RecipeDetailView(recipe: model.recipes[index])
+                            })
+                            .buttonStyle(PlainButtonStyle())
+                                .frame(width: geo.size.width - 40, height: geo.size.height - 100, alignment: .center)
                                 .cornerRadius(15)
                                 .shadow(color: Color(.sRGB, red: 0, green: 0, blue: 0, opacity: 0.5), radius: 10, x: -5, y: 5)
                             
