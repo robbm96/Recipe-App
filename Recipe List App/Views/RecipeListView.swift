@@ -49,9 +49,16 @@ struct RecipeListView: View {
                                             .clipped()
                                             //Round the corners of the image
                                             .cornerRadius(5)
-                                        //Display the text of the food
-                                        Text(r.name)
-                                            .foregroundColor(.black)
+                                        //Display the text of the food and its highlights
+                                        VStack(alignment: .leading){
+                                            Text(r.name)
+                                                .foregroundColor(.black)
+                                                .bold()
+                                            RecipeHighlightsView(highlights: r.highlights)
+                                                .foregroundColor(.black)
+                                                .font(.subheadline)
+                                                
+                                        }
                                 }
                             })
                             //Create and HStack to display the data horizontally. "spacing" dictates the space between each piece of data. I.E. the image and the text

@@ -16,6 +16,8 @@ struct RecipeFeaturedView: View {
     //Default set to false
     @State var isDetailViewShowing = false
     
+    @State var tabSelectionIndex = 0
+    
     var body: some View {
        
         VStack(alignment: .leading, spacing: 0.0){
@@ -26,10 +28,11 @@ struct RecipeFeaturedView: View {
                 .padding(.leading)
                 .padding(.top, 40)
             
+            //Use GeometryReader for recipe cards
             GeometryReader{ geo in
                 
                 //TabView used to show card stack of featured recipes
-                TabView{
+                TabView(selection: $tabSelectionIndex){
                     
                     //Loop through recipes array
                     ForEach(0..<model.recipes.count, id:\.self) { index in
@@ -78,18 +81,39 @@ struct RecipeFeaturedView: View {
             VStack(alignment: .leading, spacing: 10.0){
                 Text("Preperation time:")
                     .font(.headline)
-                
-                Text("1 Hour")
+                //Display prepTime dynamically depending on the recipe showing on the card view
+                Text(model.recipes[tabSelectionIndex].prepTime)
                 
                 Text("Highlights:")
                     .font(.headline)
-                
-                Text("Thicc, Juicy")
+                //Display highlights dynamically depending on the recipe showing on the card view
+                RecipeHighlightsView(highlights: model.recipes[tabSelectionIndex].highlights)
             }
             .padding([.top, .leading, .bottom])
             
             
         }
+        .onAppear {
+            setFeaturedIndex()
+        }
+    }
+    
+    func setFeaturedIndex() {
+        
+        //Find the index of the first recipe that is featured
+        var index = model.recipes.firstIndex { (recipe) -> Bool in
+            
+            return recipe.featured
+            
+//            if recipe.featured == true {
+//                return true
+//            }
+            
+        }
+        
+        //In-line if statement.
+        tabSelectionIndex = index ?? 0
+        
     }
 }
 
